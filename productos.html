@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="follow">
+        <meta name="description" content="Tienda Boutique de cortes Premium de carne de Llama">
+        <meta name="keywords" content="Llama, carne, saludable, bajo colesterol, barato">
+        <title>Nuestro Jujuicito</title>
+        <link rel="stylesheet" href="styles.css"> 
+        <link rel="icon" href="logo.ico">
+</head>
+<body>
+        <header>
+            <img src="logo.jpg" height="100px" width="200px" alt="logo">
+            <h1>Nuestro Jujuicito</h1>
+            <h2>Carnes Premium de Llama</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Comprar</a></li>
+                    <li><a href="nosotros.html">Sobre Nosotros</a></li>
+                    <li><img src="facebook.png" height="20px" width="30px" alt="logo"><a href="http://www.facebook.com" target="_blank">Facebook</a></li>
+                </ul>
+            </nav>
+        </header>
+        <hr>
+    <main>
+        <h2>Nuestros Cortes</h2>
+        <section id="cortes">
+            <article>
+                <h3>Piernas</h3>
+                <img src="pierna.jpg" width="400px" height="300px" alt="Piernas de llama">
+                <p>Precio: $6000 por kg.</p>
+                <button class="agregar-carrito" data-id="1" data-nombre="Pierna" data-precio="6000">Agregar al Carrito</button> 
+
+                <h3>Lomo</h3>
+                <img src="lomo.jpg" width="400px" height="300px" alt="Lomo de llama">
+                <p>Precio: $10000 por kg.</p>
+                <button class="agregar-carrito" data-id="2" data-nombre="Lomo" data-precio="10000">Agregar al Carrito</button>
+                
+            </article>
+            <article>
+                <h3>Costillar</h3>
+                <img src="corte3.jpg" width="400px" height="300px" alt="Costillar de llama">
+                <p>Precio: $8000 por kg.</p>
+                <button class="agregar-carrito" data-id="3" data-nombre="Costillar" data-precio="8000">Agregar al Carrito</button>
+                <h3>Asado de Llama</h3>
+                <img src="picada.jpg" width="400px" height="300px" alt="Asado de llama">
+                <p>Precio: $10000 por kg.</p>
+                <button class="agregar-carrito" data-id="4" data-nombre="Asado" data-precio="10000">Agregar al Carrito</button>
+                
+            </article>
+            <article>
+                <h3>Nalga</h3>
+                <img src="corte1.jpg" width="400px" height="300px" alt="Nalga">
+                <p>Precio: $12000 por kg.</p>
+                <button class="agregar-carrito" data-id="5" data-nombre="Nalga" data-precio="12000">Agregar al Carrito</button>
+                <h3>Chorizos de llama</h3>
+                <img src="chorizos.jpg" width="400px" height="300px" alt="Chorizos de llama">
+                <p>Precio: $7000 por kg.</p>
+                <button class="agregar-carrito" data-id="6" data-nombre="Chorizo" data-precio="7000">Agregar al Carrito</button>
+
+            </article>
+            </section>
+        <!-- Carrito de Compras --> 
+    <div id="carrito"> 
+        <h2>Carrito de Compras</h2> 
+        <ul id="lista-carrito"></ul> 
+        <button id="vaciar-carrito">Vaciar Carrito</button> 
+    </div> 
+
+    </main>
+    <script> 
+      document.addEventListener('DOMContentLoaded', function() { 
+        cargarCarrito(); 
+      }); 
+    
+      // Agregar producto al carrito 
+      var botonesAgregar = document.getElementsByClassName('agregar-carrito'); 
+      for (var i = 0; i < botonesAgregar.length; i++) { 
+        botonesAgregar[i].addEventListener('click', agregarProducto); 
+      } 
+    
+      // Vaciar carrito 
+      document.getElementById('vaciar-carrito').addEventListener('click', function() { 
+        localStorage.removeItem('carrito'); 
+        cargarCarrito(); 
+      }); 
+    
+      function agregarProducto(event) { 
+        var producto = { 
+          id: event.target.getAttribute('data-id'), 
+          nombre: event.target.getAttribute('data-nombre'), 
+          precio: event.target.getAttribute('data-precio') 
+        }; 
+        
+        var carrito = JSON.parse(localStorage.getItem('carrito')) || []; 
+        carrito.push(producto); 
+        localStorage.setItem('carrito', JSON.stringify(carrito)); 
+        alert("Va a añadir este producto al carrito de compras!")
+        cargarCarrito(); 
+        
+      } 
+    
+      function cargarCarrito() { 
+        var listaCarrito = document.getElementById('lista-carrito'); 
+        listaCarrito.innerHTML = ''; 
+    
+        var carrito = JSON.parse(localStorage.getItem('carrito')) || []; 
+    
+        for (var i = 0; i < carrito.length; i++) { 
+          var producto = carrito[i]; 
+          var li = document.createElement('li'); 
+          li.textContent = producto.nombre + ' - $' + producto.precio; 
+          listaCarrito.appendChild(li); 
+        } 
+        
+      } 
+
+      function eliminarProducto(idProducto) {
+          var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+          carrito = carrito.filter(function (producto) {
+              return producto.id !== idProducto;
+          })
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+          cargarCarrito()
+      }
+    </script>
+    <footer>
+        <p>&copy; 2024 Nuestro Jujuicito. Todos los derechos reservados.</p>
+        <p>Visítanos en: Avenida Bio Bio 123, Pelotilehue</p>
+    </footer>
+</body>
+</html>

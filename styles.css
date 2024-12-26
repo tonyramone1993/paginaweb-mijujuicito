@@ -1,0 +1,116 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Mulish&family=Roboto&display=swap');
+body {
+  background-image: url(fondo.jpg);
+  background-color: black;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Mulish', sans-serif;;
+  font-size: large;
+  color: burlywood;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Fondo gris claro */
+}
+
+h1, h2, h3 {font-family: 'Roboto', sans-serif;}
+
+header {
+  border-radius: 20px 2em 10% 40px; border:1px solid blue;
+  background-color: #FDBE15;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+main {
+  padding: 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.servicios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+img{
+  border-radius: 20px, 20px, 0px, 0px;
+}
+
+.servicio {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  width: 300px; /* Ajusta el ancho según tus necesidades */
+}
+
+#cortes{
+  display: flex; align-items: normal; justify-content: space-evenly; text-align: center;
+
+}
+
+#productos{
+  display: flex; align-items: center; justify-content: space-evenly;
+}
+footer {
+  border-radius: 20px 2em 10% 40px; border:1px solid blue;
+  background-color: #FDBE15;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+button{
+  background-color: greenyellow;
+}
+
+#carrito { 
+  margin-top: 20px; 
+} 
+#lista-carrito { 
+  list-style: none; 
+  padding: 0; 
+} 
+#lista-carrito li { 
+  background-color: olivedrab; 
+  margin: 5px 0; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+} 
+#vaciar-carrito { 
+  margin-top: 10px; 
+  background-color: red; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+} 
+#vaciar-carrito:hover { 
+  background-color: darkred; 
+} 
